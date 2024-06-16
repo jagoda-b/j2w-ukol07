@@ -23,5 +23,14 @@ public class PostService {
         return postRepository.findByPublishedBeforeOrderByPublishedDesc(LocalDate.now(), PageRequest.of(0, 20));
     }
 
+    public void save(Post form) throws Exception {
+        if (postRepository.findBySlug(form.getSlug()).isPresent()) {
+            throw new Exception("A post with the same slug already exists.");
+        }
+        postRepository.save(form);
+    }
 
+    public Page<Post> allList() {
+        return postRepository.findAll(PageRequest.of(0, 20));
+    }
 }
