@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 
 @Service
@@ -25,11 +26,23 @@ public class PostService {
     }
 
     public void save(Post form) throws Exception {
-        if (postRepository.findBySlug(form.getSlug()).isPresent()) {
+        Objects.requireNonNull(form);
+        if (postRepository.existsBySlug(form.getSlug())) {
             throw new Exception("A post with the same slug already exists.");
         }
         postRepository.save(form);
     }
+
+    public void update(Post post) {
+
+    if (postRepository.existsBySlug(post.getSlug())) {
+        post.setSlug(post.getSlug());
+        post.setId(post.getId());
+        postRepository.save(post);
+    } else {
+        throw new IllegalArgumentException("Post with slug " + post.getSlug() + " does not exist");
+    }
+}
 
     public Page<Post> allList() {
         return postRepository.findAll(PageRequest.of(0, 20));

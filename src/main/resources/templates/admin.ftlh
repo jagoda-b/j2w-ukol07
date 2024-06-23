@@ -13,6 +13,7 @@
                 <th>Author</th>
                 <th>Published</th>
                 <th>Slug</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -22,6 +23,9 @@
                     <td>${post.author}</td>
                     <td>${post.published?date?string}</td>
                     <td><a href="/post/${post.slug}">${post.slug}</a></td>
+                    <td>
+                        <a href="/post/${post.slug}/edit" class="btn btn-primary">Edit</a>
+                    </td>
                 </tr>
             [/#items]
             </tbody>

@@ -23,13 +23,8 @@
 [@c.pager /]
 [/@c.page]
 
-TODO zmienić układ na bardziej naturalny dla bloga (nie tabela--]
-[#--                TODO dodać edycję posta--]
 [#--                TODO data publikacje nie obowiązkowa--]
 [#--                TODO dodać usuwanie postów--]
-[#--
 [#--                TODO dodać walidację formularza--]
-[#--                TODO układ pól w formularzu edycji--]
 [#--                TODO dodać obsługę błędów--]
 [#--                TODO dodać obsługę wyjątków--]
-[#--                TODO css może?--]
