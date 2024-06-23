@@ -1,14 +1,6 @@
 [#ftl]
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <title>Můj blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="/images/favicon.png">
-</head>
-<body>
-<h1>Posts</h1>
+[@c.page title="My blog = admin"]
+<h1>Posts - administration</h1>
 <div class="d-flex justify-content-end">
     <a href="/new" class="btn btn-success">New post</a>
 </div>
@@ -36,6 +28,4 @@
 [#else]
     <p>No posts found</p>
 [/#list]
-
-</body>
-</html>
+[/@c.page]

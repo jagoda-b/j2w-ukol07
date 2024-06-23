@@ -4,12 +4,10 @@ import cz.czechitas.java2webapps.ukol7.entity.Post;
 import cz.czechitas.java2webapps.ukol7.service.PostService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -18,16 +16,17 @@ public class PostController {
     private PostService postService;
 
     @GetMapping("/")
-    public ModelAndView list() {
-       return new ModelAndView("index")
-                .addObject("posts", postService.list());
+    public ModelAndView list(@RequestParam(required = false, defaultValue = "0") int page,
+                             @RequestParam(required = false, defaultValue = "20") int size) {
+        return new ModelAndView("index")
+                .addObject("posts", postService.list(PageRequest.of(page, size)));
     }
 
     @GetMapping("/admin")
-     public ModelAndView adminList() {
-          return new ModelAndView("admin")
-                 .addObject("posts", postService.allList());
-     }
+    public ModelAndView adminList() {
+        return new ModelAndView("admin")
+                .addObject("posts", postService.allList());
+    }
 
 
     @GetMapping("/post/{slug}")
@@ -55,6 +54,4 @@ public class PostController {
         }
         return "redirect:/";
     }
-
-
 }

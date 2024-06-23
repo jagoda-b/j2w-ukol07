@@ -1,4 +1,5 @@
 [#ftl]
+[@c.page title="New post"]
 <form action="/new" method="post">
     <div class="row">
         <div>
@@ -30,3 +31,5 @@
         </div>
     </div>
 </form>
+
+[/@c.page]

@@ -1,11 +1,9 @@
 [#ftl]
-<!DOCTYPE html>
-<html>
-    <head>
-     <title>${post.title}</title>
-    </head>
+[@c.page title="${post.title}"]
+
+
     <body>
         <h1>${post.title}</h1>
         <div>${post.body?no_esc}</div>
     </body>
-</html>
+[/@c.page]

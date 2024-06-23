@@ -5,6 +5,7 @@ import cz.czechitas.java2webapps.ukol7.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -19,8 +20,8 @@ public class PostService {
         return postRepository.findBySlug(slug).orElse(null);
     }
 
-    public Page<Post> list() {
-        return postRepository.findByPublishedBeforeOrderByPublishedDesc(LocalDate.now(), PageRequest.of(0, 20));
+    public Page<Post> list(Pageable pageable) {
+        return postRepository.findByPublishedBeforeOrderByPublishedDesc(LocalDate.now(), pageable);
     }
 
     public void save(Post form) throws Exception {
