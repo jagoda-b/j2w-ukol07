@@ -42,29 +42,29 @@ public class PostController {
     }
 
     @PostMapping("/post/{slug}/edit")
-public String updatePost(@PathVariable String slug, @ModelAttribute("form") @Valid Post form, BindingResult bindingResult) {
-    if (bindingResult.hasErrors()) {
-        return "edit";
-    }
-    try {
-        Post existingPost = postService.singlePost(slug);
-        if (existingPost == null) {
-            throw new IllegalArgumentException("Post with slug " + slug + " does not exist");
+    public String updatePost(@PathVariable String slug, @ModelAttribute("form") @Valid Post form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "edit";
         }
-        // Copy the updated fields from the form to the existing post
-        existingPost.setTitle(form.getTitle());
-        existingPost.setAuthor(form.getAuthor());
-        existingPost.setPerex(form.getPerex());
-        existingPost.setBody(form.getBody());
-        existingPost.setPublished(form.getPublished());
-        // The slug should not be changed, so no need to copy it
-        postService.update(existingPost);
-    } catch (Exception e) {
-        bindingResult.rejectValue("slug", null, e.getMessage());
-        return "edit";
+        try {
+            Post existingPost = postService.singlePost(slug);
+            if (existingPost == null) {
+                throw new IllegalArgumentException("Post with slug " + slug + " does not exist");
+            }
+            // Copy the updated fields from the form to the existing post
+            existingPost.setTitle(form.getTitle());
+            existingPost.setAuthor(form.getAuthor());
+            existingPost.setPerex(form.getPerex());
+            existingPost.setBody(form.getBody());
+            existingPost.setPublished(form.getPublished());
+            // The slug should not be changed, so no need to copy it
+            postService.update(existingPost);
+        } catch (Exception e) {
+            bindingResult.rejectValue("slug", null, e.getMessage());
+            return "edit";
+        }
+        return "redirect:/post/" + slug;
     }
-    return "redirect:/post/" + slug;
-}
 
     @GetMapping("/new")
     public ModelAndView newPost() {
@@ -84,5 +84,12 @@ public String updatePost(@PathVariable String slug, @ModelAttribute("form") @Val
             return "/new";
         }
         return "redirect:/";
+    }
+
+
+    @GetMapping("/post/{slug}/delete")
+    public String deletePost(@PathVariable String slug) {
+        postService.delete(slug);
+        return "redirect:/admin";
     }
 }

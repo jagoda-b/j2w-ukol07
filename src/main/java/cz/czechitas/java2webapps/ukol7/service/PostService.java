@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -47,4 +48,9 @@ public class PostService {
     public Page<Post> allList() {
         return postRepository.findAll(PageRequest.of(0, 20));
     }
+
+    @Transactional
+    public void delete(String slug) {
+    postRepository.deleteBySlug(slug);
+}
 }
