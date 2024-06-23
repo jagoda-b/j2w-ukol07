@@ -5,27 +5,29 @@
     <a href="/new" class="btn btn-success">New post</a>
 </div>
 [#list posts.content]
-    <table>
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Published</th>
-            <th>Slug</th>
-        </tr>
-        </thead>
-        <tbody>
-        [#items as post]
+    <div class="admin-table">
+        <table>
+            <thead>
             <tr>
-                <td>${post.title}</td>
-                <td>${post.author}</td>
-                <td>${post.published?date?string}</td>
-                <td><a href="/post/${post.slug}">${post.slug}</a></td>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Published</th>
+                <th>Slug</th>
             </tr>
-        [/#items]
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            [#items as post]
+                <tr>
+                    <td>${post.title}</td>
+                    <td>${post.author}</td>
+                    <td>${post.published?date?string}</td>
+                    <td><a href="/post/${post.slug}">${post.slug}</a></td>
+                </tr>
+            [/#items]
+            </tbody>
+        </table>
+    </div>
 [#else]
-    <p>No posts found</p>
 [/#list]
 [/@c.page]
+    <p>No posts found</p>

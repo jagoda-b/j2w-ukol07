@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    padding: 10px;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.post {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.post h2 {
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+.post .meta {
+    font-style: italic;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.post .perex {
+    margin-bottom: 20px;
+}
+
+.post a {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.post a:hover {
+    background-color: #2c3e50;
+}
+
+.single-post {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.single-post h1 {
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+.single-post div {
+    margin-bottom: 20px;
+}
+
+.new-post-form {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.new-post-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.new-post-form input,
+.new-post-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.new-post-form button {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.new-post-form button:hover {
+    background-color: #2c3e50;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.admin-table th {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.admin-table td {
+    background-color: #f4f4f4;
+}
+
+.admin-table a {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.admin-table a:hover {
+    background-color: #2c3e50;
+}
