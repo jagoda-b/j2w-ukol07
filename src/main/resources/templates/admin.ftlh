@@ -21,7 +21,7 @@
                     <tr>
                         <td>${post.title}</td>
                         <td>${post.author}</td>
-                        <td>${post.published?date?string}</td>
+                        <td>[#if post.published??]${post.published?date?string}[/#if] </td>
                         <td><a href="/post/${post.slug}">${post.slug}</a></td>
                         <td>
                             <a href="/post/${post.slug}/edit" class="btn btn-primary">Edit</a>

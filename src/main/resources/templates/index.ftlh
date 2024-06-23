@@ -10,7 +10,10 @@
         <h2>${post.title}</h2>
         <div class="meta">
             <span>Author: ${post.author}</span>
-            <span>Published: ${post.published?date?string}</span>
+            [#if post.published??]
+                <span>Published: ${post.published?date?string}</span>
+            [/#if]
+
         </div>
         <p class="perex">${post.perex}</p>
         <a href="/post/${post.slug}">Read more...</a>
@@ -23,8 +26,8 @@
 [@c.pager /]
 [/@c.page]
 
-[#--                TODO data publikacje nie obowiązkowa--]
-[#--                TODO dodać usuwanie postów--]
+
+
 [#--                TODO dodać walidację formularza--]
 [#--                TODO dodać obsługę błędów--]
 [#--                TODO dodać obsługę wyjątków--]
